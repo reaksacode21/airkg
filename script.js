@@ -8,7 +8,13 @@ function calculatePercentage(event) {
     // Calculate percentage
     if (firstGoods !== 0) { // Prevent divide by zero
         const percent = ((firstGoods - lastGoods) / firstGoods) * (-100);
-        document.getElementById('resultDisplay').innerHTML = `Result: ${percent.toFixed(2)}%`;
+        if(percent>-5 && percent <5){ 
+            document.getElementById('resultDisplay').innerHTML =  `គីឡូត្រឹមត្រូវ=${firstGoods-lastGoods}kg`+`=${percent.toFixed(2)}%`;
+        }else if(percent>5){
+            document.getElementById('resultDisplay').innerHTML =  `គីឡូលើសBill=${-(firstGoods-lastGoods)}kg`+`=${percent.toFixed(2)}%`;
+        }else{
+            document.getElementById('resultDisplay').innerHTML =  `គីឡូតិចជាងBill=${(firstGoods-lastGoods)}kg`+`=${percent.toFixed(2)}%`;
+        }
     } else {
         document.getElementById('resultDisplay').innerHTML = 'Error: First value must not be zero.';
     }
